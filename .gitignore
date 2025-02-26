@@ -1,0 +1,5 @@
+﻿.vs
+Common/bin
+Common/obj
+Products_API/obj
+Products_DataLayer/obj
