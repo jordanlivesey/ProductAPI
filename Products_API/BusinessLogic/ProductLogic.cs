@@ -15,14 +15,22 @@ namespace Products_API.BusinessLogic
 
         public override async Task<RepositoryLogicResponse<ProductModel>> Create(ProductModel model)
         {
-            var response = await _repository.Create(model);
             // some better status codes could be added but a NotFound will do for now
             HttpStatusCode statusCode = HttpStatusCode.NotFound;
-
-            if(response != null)
+            ProductModel response = null;
+            try
             {
-                statusCode = HttpStatusCode.OK;
-                
+                response = await _repository.Create(model);
+
+                if (response != null)
+                {
+                    statusCode = HttpStatusCode.OK;
+
+                }
+
+            } catch(Exception e)
+            {
+                statusCode = HttpStatusCode.InternalServerError;
             }
 
             return new RepositoryLogicResponse<ProductModel>()
@@ -34,7 +42,16 @@ namespace Products_API.BusinessLogic
 
         public override async Task<RepositoryLogicResponse<bool>> Delete(int id)
         {
-            await _repository.Delete(id);
+            HttpStatusCode statusCode = HttpStatusCode.NotFound;
+
+            try
+            {
+                await _repository.Delete(id);
+            }
+            catch (Exception e)
+            {
+                statusCode = HttpStatusCode.InternalServerError;
+            }
 
             return new RepositoryLogicResponse<bool>()
             {
@@ -44,15 +61,23 @@ namespace Products_API.BusinessLogic
 
         public override async Task<RepositoryLogicResponse<IEnumerable<ProductModel>>> Get()
         {
-            var response = await _repository.Get();
-
             // some better status codes could be added but a NotFound will do for now
             HttpStatusCode statusCode = HttpStatusCode.NotFound;
-
-            if (response != null)
+            IEnumerable<ProductModel> response = null;
+            try
             {
-                statusCode = HttpStatusCode.OK;
+                response = await _repository.Get();
 
+                if (response != null)
+                {
+                    statusCode = HttpStatusCode.OK;
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                statusCode = HttpStatusCode.InternalServerError;
             }
 
             return new RepositoryLogicResponse<IEnumerable<ProductModel>>()
@@ -64,15 +89,24 @@ namespace Products_API.BusinessLogic
 
         public override async Task<RepositoryLogicResponse<ProductModel>> Get(int id)
         {
-            var response = await _repository.Get(id);
-
             // some better status codes could be added but a NotFound will do for now
             HttpStatusCode statusCode = HttpStatusCode.NotFound;
+            ProductModel response = null;
 
-            if (response != null)
+            try
             {
-                statusCode = HttpStatusCode.OK;
+                response = await _repository.Get(id);
 
+                if (response != null)
+                {
+                    statusCode = HttpStatusCode.OK;
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                statusCode = HttpStatusCode.InternalServerError;
             }
 
             return new RepositoryLogicResponse<ProductModel>()
@@ -89,14 +123,23 @@ namespace Products_API.BusinessLogic
 
         public override async Task<RepositoryLogicResponse<ProductModel>> Update(ProductModel model)
         {
-            var response = await _repository.Update(model);
-            // some better status codes could be added but a NotFound will do for now
             HttpStatusCode statusCode = HttpStatusCode.NotFound;
+            ProductModel response = null;
 
-            if (response != null)
+            try
             {
-                statusCode = HttpStatusCode.OK;
+                response = await _repository.Update(model);
 
+                if (response != null)
+                {
+                    statusCode = HttpStatusCode.OK;
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                statusCode = HttpStatusCode.InternalServerError;
             }
 
             return new RepositoryLogicResponse<ProductModel>()

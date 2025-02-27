@@ -51,9 +51,9 @@ namespace Products_API.Controllers
 
 
         [HttpDelete()]
-        public async Task<IActionResult> Delete(ProductModel model)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _logic.Delete(model);
+            await _logic.Delete(id);
             await _logic.Save();
             return Ok();
         }
