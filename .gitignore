@@ -5,3 +5,5 @@ Products_API/obj
 Products_DataLayer/obj
 Products_DataLayer/bin
 /Products_API/bin/Debug/net8.0
+/Products_EF/bin/Debug/net8.0
+/Products_EF/obj

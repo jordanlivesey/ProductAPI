@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{7F8B13DD-C232-4102-B178-8804C3292DCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_EF", "Products_DataLayer\Products_EF.csproj", "{E17107A1-5C95-4A75-A0FC-5757AD0A61C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_EF", "Products_EF\Products_EF.csproj", "{E17107A1-5C95-4A75-A0FC-5757AD0A61C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_API", "Products_API\Products_API.csproj", "{296C5CF0-161B-430D-B7C6-9BBAE7C23D8C}"
 EndProject
