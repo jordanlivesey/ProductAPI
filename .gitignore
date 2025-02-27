@@ -4,3 +4,4 @@ Common/obj
 Products_API/obj
 Products_DataLayer/obj
 Products_DataLayer/bin
+/Products_API/bin/Debug/net8.0
