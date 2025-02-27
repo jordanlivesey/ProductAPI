@@ -1,7 +1,7 @@
-﻿using Common.Interfaces;
+﻿using Common.Interfaces.Repository;
 using Microsoft.Extensions.Logging;
 
-namespace Common
+namespace Common.Repository
 {
     public class RepositoryLogger<Key, Model, Controller> : RepositoryDecorator<IRepository<Key, Model>>, IRepository<Key, Model> where Model : class, IRepositoryModel<Key>
     {

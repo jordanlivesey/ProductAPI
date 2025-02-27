@@ -1,4 +1,4 @@
-﻿using Common.Interfaces;
+﻿using Common.Interfaces.Repository;
 using Products_EF.Contexts;
 
 namespace Products_API.Repositories.Base

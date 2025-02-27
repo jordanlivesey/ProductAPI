@@ -1,10 +1,13 @@
-using Common;
-using Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Products_API.Models;
 using Products_API.Repositories;
 using Common.Extensions;
 using Products_API.Controllers;
+using Common.Interfaces.Repository;
+using Common.Repository;
+using Common.Logic;
+using Common.Interfaces.Logic;
+using Products_API.BusinessLogic;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +24,7 @@ builder.Services.AddDbContext<Products_EF.Contexts.ProductsContext>(options =>
 });
 
 builder.Services.AddScoped(typeof(IRepository<int, ProductModel>), typeof(ProductRepository));
-builder.Services.AddScoped(typeof(IRepository<int, ProductModel>), typeof(ProductRepository));
+builder.Services.AddScoped(typeof(IRepositoryLogicLayer<int, ProductModel, RepositoryLogicResponse<ProductModel>>), typeof(ProductLogic));
 builder.Services.WrapService(typeof(IRepository<int, ProductModel>), typeof(RepositoryLogger<int, ProductModel, ProductController>));
 
 var app = builder.Build();

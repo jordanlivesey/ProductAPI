@@ -1,4 +1,4 @@
-﻿using Common.Interfaces;
+﻿using Common.Interfaces.Repository;
 using System.ComponentModel.DataAnnotations;
 
 namespace Products_API.Models
