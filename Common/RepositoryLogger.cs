@@ -3,10 +3,10 @@ using Microsoft.Extensions.Logging;
 
 namespace Common
 {
-    public class RepositoryLogger<Key, Model> : RepositoryDecorator<IRepository<Key, Model>>, IRepository<Key, Model> where Model : class, IRepositoryModel<Key>
+    public class RepositoryLogger<Key, Model, Controller> : RepositoryDecorator<IRepository<Key, Model>>, IRepository<Key, Model> where Model : class, IRepositoryModel<Key>
     {
         private ILogger _logger { get; }
-        public RepositoryLogger(IRepository<Key, Model> repository, ILogger logger) : base(repository)
+        public RepositoryLogger(IRepository<Key, Model> repository, ILogger<Controller> logger) : base(repository)
         {
             _logger = logger;
         }
