@@ -5,6 +5,9 @@ namespace Products_EF.Contexts
 {
     public class ProductsContext : DbContext
     {
+        public ProductsContext(DbContextOptions<ProductsContext> options) : base(options) { }
+
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
