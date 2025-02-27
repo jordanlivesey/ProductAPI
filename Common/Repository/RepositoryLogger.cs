@@ -1,5 +1,7 @@
 ﻿using Common.Interfaces.Repository;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Common.Repository
 {
@@ -11,33 +13,147 @@ namespace Common.Repository
             _logger = logger;
         }
 
-        public Task<Model> Create(Model model)
+        public async Task<Model> Create(Model model)
         {
-            throw new NotImplementedException();
+            string method = "Create";
+            var sw = TimerStart(method);
+
+            try
+            {
+                return await Repository.Create(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("repository", method, ex);
+                throw;
+            }
+            finally
+            {
+                TimerFinish(method, sw);
+            }
         }
 
-        public Task Delete(Key id)
+        public async Task Delete(Key id)
         {
-            throw new NotImplementedException();
+            string method = "Delete";
+            var sw = TimerStart(method);
+
+            try
+            {
+                await Repository.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("repository", method, ex);
+                throw;
+            }
+            finally
+            {
+                TimerFinish(method, sw);
+            }
         }
 
-        public Task<IEnumerable<Model>> Get()
+        public async Task<IEnumerable<Model>> Get()
         {
-            throw new NotImplementedException();
+            string method = "GetAll";
+            var sw = TimerStart(method);
+
+            try
+            {
+                return await Repository.Get();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("repository", method, ex);
+                throw;
+            }
+            finally
+            {
+                TimerFinish(method, sw);
+            }
         }
 
-        public Task<Model> Get(Key id)
+        public async Task<Model> Get(Key id)
         {
-            throw new NotImplementedException();
+            string method = "Get";
+            var sw = TimerStart(method);
+
+            try
+            {
+                return await Repository.Get(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("repository", method, ex);
+                throw;
+            }
+            finally
+            {
+                TimerFinish(method, sw);
+            }
         }
 
-        public Task<Model> Update(Model model)
+        public async Task<Model> Update(Model model)
         {
-            throw new NotImplementedException();
+            string method = "Update";
+            var sw = TimerStart(method);
+
+            try
+            {
+                return await Repository.Update(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("repository", method, ex);
+                throw;
+            }
+            finally
+            {
+                TimerFinish(method, sw);
+            }
         }
-        public Task Save()
+        public async Task Save()
         {
-            throw new NotImplementedException();
+            string method = "Save";
+            var sw = TimerStart(method);
+
+            try
+            {
+                await Repository.Save();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("repository", method, ex);
+                throw;
+            }
+            finally
+            {
+                TimerFinish(method, sw);
+            }
+        }
+
+        private Stopwatch TimerStart(string methodName)
+        {
+            string type = typeof(Model).Name;
+
+            _logger.LogInformation($"Repository event call for method: {methodName}");
+            Stopwatch sw = null;
+            sw = new Stopwatch();
+            sw.Start();
+
+            return sw;
+        }
+
+        private void TimerFinish(string methodName, Stopwatch sw)
+        {
+            string type = typeof(Model).Name;
+
+            if (sw != null)
+            {
+                sw.Stop();
+            }
+
+            _logger.LogInformation($"Repository event call finished for for method: {methodName} in {sw.Elapsed}");
         }
     }
 }
