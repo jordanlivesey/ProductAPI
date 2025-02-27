@@ -1,7 +1,6 @@
 ﻿using Common.Interfaces.Repository;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
-using System.Reflection;
 
 namespace Common.Repository
 {

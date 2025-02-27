@@ -2,7 +2,6 @@
 using Common.Interfaces.Repository;
 using Common.Repository;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Products_API.Controllers
 {

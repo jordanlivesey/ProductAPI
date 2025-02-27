@@ -1,7 +1,5 @@
-﻿using Common.Interfaces.Logic;
-using Common.Interfaces.Repository;
+﻿using Common.Interfaces.Repository;
 using Common.Repository;
-using Microsoft.AspNetCore.Http;
 using Products_API.Models;
 using System.Net;
 

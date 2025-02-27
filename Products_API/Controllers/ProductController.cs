@@ -1,13 +1,7 @@
-using Azure;
-using Azure.Core;
 using Common.Interfaces.Logic;
-using Common.Interfaces.Repository;
 using Common.Repository;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Products_API.Models;
-using Products_EF.Contexts;
-using Products_EF.Entites;
 using System.Net;
 
 namespace Products_API.Controllers

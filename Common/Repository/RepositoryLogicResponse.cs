@@ -1,6 +1,4 @@
-﻿using Common.Interfaces.Logic;
-using Common.Logic;
-using System.Net;
+﻿using Common.Logic;
 
 namespace Common.Repository
 {

@@ -1,7 +1,5 @@
 ﻿using Common.Interfaces.Logic;
 using Common.Interfaces.Repository;
-using Common.Logic;
-using System.Reflection;
 
 namespace Common.Repository
 {
