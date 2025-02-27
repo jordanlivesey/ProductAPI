@@ -64,9 +64,10 @@ namespace Products_API.Repositories
         {
             var product = await DbContext.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
             if (product == null) return;
+            DbContext.Products.Remove(product);
         }
 
-        
+
         public override async Task<ProductModel> Update(ProductModel model)
         {
             var product = await DbContext.Products.Where(x => x.Id == model.Id).FirstOrDefaultAsync();
