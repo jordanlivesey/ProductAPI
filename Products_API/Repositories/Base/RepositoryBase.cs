@@ -12,15 +12,15 @@ namespace Products_API.Repositories.Base
             DbContext = dbContext;
         }
 
-        public abstract Task<IEnumerable<Model>> Create(Model model);
+        public abstract Task<Model> Create(Model model);
 
-        public abstract Task Delete(Model model);
+        public abstract Task Delete(Key id);
 
         public abstract Task<IEnumerable<Model>> Get();
 
         public abstract Task<Model> Get(Key id);
 
-        public abstract Task<IEnumerable<Model>> Update(Model model);
+        public abstract Task<Model> Update(Model model);
 
         public abstract Task Save();
     }

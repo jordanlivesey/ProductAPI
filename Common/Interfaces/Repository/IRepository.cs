@@ -4,9 +4,9 @@
     {
         Task<IEnumerable<Model>> Get();
         Task<Model> Get(Key id);
-        Task<IEnumerable<Model>> Create(Model model);
-        Task<IEnumerable<Model>> Update(Model model);
-        Task Delete(Model model);
+        Task<Model> Create(Model model);
+        Task<Model> Update(Model model);
+        Task Delete(Key id);
         Task Save();
     }
 }

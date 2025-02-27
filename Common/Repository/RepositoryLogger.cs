@@ -11,12 +11,12 @@ namespace Common.Repository
             _logger = logger;
         }
 
-        public Task<IEnumerable<Model>> Create(Model model)
+        public Task<Model> Create(Model model)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(Model model)
+        public Task Delete(Key id)
         {
             throw new NotImplementedException();
         }
@@ -31,7 +31,7 @@ namespace Common.Repository
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Model>> Update(Model model)
+        public Task<Model> Update(Model model)
         {
             throw new NotImplementedException();
         }
