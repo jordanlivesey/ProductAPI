@@ -35,14 +35,14 @@ namespace Products_API.BusinessLogic
 
             return new RepositoryLogicResponse<ProductModel>()
             {
-                StatusCode = statusCode,
+                StatusCode = (int)statusCode,
                 Response = response
             };
         }
 
         public override async Task<RepositoryLogicResponse<bool>> Delete(int id)
         {
-            HttpStatusCode statusCode = HttpStatusCode.NotFound;
+            HttpStatusCode statusCode = HttpStatusCode.OK;
 
             try
             {
@@ -55,7 +55,7 @@ namespace Products_API.BusinessLogic
 
             return new RepositoryLogicResponse<bool>()
             {
-                StatusCode = HttpStatusCode.OK
+                StatusCode = (int)statusCode
             };
         }
 
@@ -82,7 +82,7 @@ namespace Products_API.BusinessLogic
 
             return new RepositoryLogicResponse<IEnumerable<ProductModel>>()
             {
-                StatusCode = statusCode,
+                StatusCode = (int)statusCode,
                 Response = response
             };
         }
@@ -111,7 +111,7 @@ namespace Products_API.BusinessLogic
 
             return new RepositoryLogicResponse<ProductModel>()
             {
-                StatusCode = statusCode,
+                StatusCode = (int)statusCode,
                 Response = response
             };
         }
@@ -144,7 +144,7 @@ namespace Products_API.BusinessLogic
 
             return new RepositoryLogicResponse<ProductModel>()
             {
-                StatusCode = statusCode,
+                StatusCode = (int)statusCode,
                 Response = response
             };
         }

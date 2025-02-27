@@ -1,3 +1,5 @@
+using Azure;
+using Azure.Core;
 using Common.Interfaces.Logic;
 using Common.Interfaces.Repository;
 using Common.Repository;
@@ -6,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Products_API.Models;
 using Products_EF.Contexts;
 using Products_EF.Entites;
+using System.Net;
 
 namespace Products_API.Controllers
 {
@@ -21,14 +24,26 @@ namespace Products_API.Controllers
         public async Task<IActionResult> Get()
         {
             var response = await _logic.Get();
-            return Ok(response);
+
+            if (response.StatusCode != (int)HttpStatusCode.OK)
+            {
+                return this.StatusCode(response.StatusCode);
+            }
+
+            return Ok(response.Response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var response = await _logic.Get(id);
-            return Ok(response);
+
+            if(response.StatusCode != (int) HttpStatusCode.OK)
+            {
+                return this.StatusCode(response.StatusCode); 
+            }
+
+            return Ok(response.Response);
         }
 
         [HttpPost()]
@@ -37,7 +52,12 @@ namespace Products_API.Controllers
             var response = await _logic.Create(model);
             await _logic.Save();
 
-            return Ok(response);
+            if (response.StatusCode != (int)HttpStatusCode.OK)
+            {
+                return this.StatusCode(response.StatusCode);
+            }
+
+            return Ok(response.Response); 
         }
 
         [HttpPut()]
@@ -46,15 +66,26 @@ namespace Products_API.Controllers
             var response = await _logic.Update(model);
             await _logic.Save();
 
-            return Ok(response);
+            if (response.StatusCode != (int)HttpStatusCode.OK)
+            {
+                return this.StatusCode(response.StatusCode);
+            }
+
+            return Ok(response.Response);
         }
 
 
         [HttpDelete()]
         public async Task<IActionResult> Delete(int id)
         {
-            await _logic.Delete(id);
+            var response = await _logic.Delete(id);
             await _logic.Save();
+
+            if (response.StatusCode != (int)HttpStatusCode.OK)
+            {
+                return this.StatusCode(response.StatusCode);
+            }
+
             return Ok();
         }
     }

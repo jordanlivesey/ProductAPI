@@ -6,6 +6,6 @@ namespace Common.Repository
 {
     public class RepositoryLogicResponse<T> : LogicResponse<T>
     {
-        public HttpStatusCode StatusCode { get; set; }
+        public int StatusCode { get; set; }
     }
 }
