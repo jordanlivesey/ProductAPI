@@ -16,10 +16,10 @@ namespace Common.Repository
         }
 
         public abstract Task<RepositoryLogicResponse<Model>> Create(Model model);
-        public abstract Task Delete(Model model);
+        public abstract Task<RepositoryLogicResponse<bool>> Delete(Key id);
         public abstract Task<RepositoryLogicResponse<IEnumerable<Model>>> Get();
         public abstract Task<RepositoryLogicResponse<Model>> Get(Key id);
-        public abstract Task<RepositoryLogicResponse<IEnumerable<Model>>> Update(Model model);
+        public abstract Task<RepositoryLogicResponse<Model>> Update(Model model);
         public abstract Task Save();
     }
 }
